@@ -1,9 +1,14 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import {FaSearch} from "react-icons/fa"
+import { useState } from 'react';
 
 export default function Home() {
-  const [nameHeroes]
+  const [nameHeroes, setNameHeroes] = useState();
+
+  function resultSearch() {
+    window.location.href = `/search?name=${nameHeroes}` ;
+  }
   
   return (
     <div className={styles.container}>
@@ -11,11 +16,16 @@ export default function Home() {
         <title>Marvel</title>
       </Head>
       <div className={styles.input}>
-        <input type= "text" placeholder= "Digite Aqui Sua pesquisa"></input>
+        <input type= "text" placeholder= "Digite Aqui Sua pesquisa" onChange={(e) => {
+          setNameHeroes(e.target.value);
+        }} />
 
         <button 
           className={styles.button}
-
+          onClick={(event) => {
+            event.preventDefault();
+            resultSearch();
+          }}
         >
           <FaSearch />
         </button>
