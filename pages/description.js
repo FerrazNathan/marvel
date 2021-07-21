@@ -4,7 +4,7 @@ import Head from 'next/head'
 import styles from '../styles/search.module.css'
 
 export default function Description() {
-    const [data,setData] = useState();
+    const [data, setData] = useState();
 
     let url
     let nameHeroes
@@ -27,16 +27,32 @@ export default function Description() {
     return (
         <div className={styles.Description}>
             <Head>
-                <h1>
+                <title>
                     Marvel-Descrições
-                </h1>
+                </title>
             </Head>
 
             {data &&
                 <div className={styles.Details}>
                     {data.map((heroes) => {
                         return (
+                            <div className={styles.DetailsFath}>
+                                <div className={styles.DetailsHero}>
+                                    <a href={`/data?id=${heroes.id}`}>
+                                        <h1>{heroes.name}</h1>
+                                        <img
+                                            src={`${heroes.thumbnail.path}.${heroes.thumbnail.extension}`}
+                                        />
+                                    </a>
+                                </div>
+                            </div>
+                        )
+                    })
+                    }
+                </div>
 
+            }
+            
         </div>
     )
 }

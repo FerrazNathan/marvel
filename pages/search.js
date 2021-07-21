@@ -44,7 +44,7 @@ export default function Search() {
                         return (
                             <div className={styles.DetailsFath}>
                                 <div className={styles.DetailsHero}>
-                                    <a href={`/hero?id=${heroes.id}`}>
+                                    <a href={`/description?id=${heroes.id}`}>
                                         <h1>{heroes.name}</h1>
                                         <img
                                             src={`${heroes.thumbnail.path}.${heroes.thumbnail.extension}`}
