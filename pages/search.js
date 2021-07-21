@@ -28,9 +28,11 @@ export default function Search() {
             });
     }, []);
 
+    console.log(data);
+
     return (
 
-        <div>
+        <div className={styles.DetailsFath}>
 
             <Head>
                 <title>
@@ -42,7 +44,7 @@ export default function Search() {
                 <div className={styles.Details}>
                     {data.map((heroes) => {
                         return (
-                            <div className={styles.DetailsFath}>
+                            <div>
                                 <div className={styles.DetailsHero}>
                                     <a href={`/description?id=${heroes.id}`}>
                                         <h1>{heroes.name}</h1>

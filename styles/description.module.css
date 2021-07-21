@@ -1,0 +1,37 @@
+.Description{
+    background-image: url(../public/spider3.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.Details{
+    width: 500px;
+    margin: -20px auto;
+}
+
+.Details img{
+    width: 500px;
+}
+
+.Details h1{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    /* width: 500px; */
+    color: white;
+    /* margin: 20px 0; */
+}
+
+.DetailsHero p{
+    color: white;
+    list-style: none;
+    text-align: center;
+}
+
+.Details a:hover{
+    text-decoration: underline;
+    color: white;
+
+}
+
