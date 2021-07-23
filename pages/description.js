@@ -40,8 +40,20 @@ export default function Description() {
                                     <img
                                         src={`${heroes.thumbnail.path}.${heroes.thumbnail.extension}`}
                                     />
+                                    <p>{heroes.description}</p>
 
-                                    <h1>Comics</h1>
+                                    <nav className={styles.Nav}>
+                                        <ul>
+                                            <li>
+                                                <a href="./comics">Comics</a>
+                                                <a href="./events">Events</a>
+                                                <a href="./series">Series</a>
+                                                <a href="./stories">Stories</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+                                    {/* <h1>Comics</h1>
                                     {heroes.comics.items.map((comic) => {
                                         console.log(comic, "comic");
                                         return (
@@ -76,7 +88,7 @@ export default function Description() {
                                                 <p>{stories.name}</p>
                                             </a>
                                         )
-                                    })}
+                                    })} */}
                                 </div>
                             </div>
                         )
