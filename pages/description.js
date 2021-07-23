@@ -31,70 +31,74 @@ export default function Description() {
                 </title>
             </Head>
             {data &&
-                <div className={styles.Details}>
+                <>
                     {data.map((heroes) => {
                         return (
-                            <div className={styles.DetailsFath}>
-                                <div className={styles.DetailsHero}>
+
+                            <div className={styles.Main}>
+                                <div className={styles.Header}>
                                     <h1>{heroes.name}</h1>
-                                    <img
-                                        src={`${heroes.thumbnail.path}.${heroes.thumbnail.extension}`}
-                                    />
-                                    <p>{heroes.description}</p>
-
-                                    <nav className={styles.Nav}>
-                                        <ul>
-                                            <li>
-                                                <a href="./comics">Comics</a>
-                                                <a href="./events">Events</a>
-                                                <a href="./series">Series</a>
-                                                <a href="./stories">Stories</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-
-                                    {/* <h1>Comics</h1>
-                                    {heroes.comics.items.map((comic) => {
-                                        console.log(comic, "comic");
-                                        return (
-                                            <a href={`/data?id=${heroes.id}`}>
-                                                <p>{comic.name}</p>
-                                            </a>
-                                        )
-                                    })}
-
-                                    <h1>Events</h1>
-                                    {heroes.events.items.map((events) => {
-                                        return (
-                                            <a href={`/data?id=${heroes.id}`}>
-                                                <p>{events.name}</p>
-                                            </a>
-                                        )
-                                    })}
-
-                                    <h1>Series</h1>
-                                    {heroes.series.items.map((series) => {
-                                        return (
-                                            <a href={`/data?id=${heroes.id}`}>
-                                                <p>{series.name}</p>
-                                            </a>
-                                        )
-                                    })}
-
-                                    <h1>Stories</h1>
-                                    {heroes.stories.items.map((stories) => {
-                                        return (
-                                            <a href={`/data?id=${heroes.id}`}>
-                                                <p>{stories.name}</p>
-                                            </a>
-                                        )
-                                    })} */}
+                                    <div className={styles.Img}>
+                                        <img
+                                            src={`${heroes.thumbnail.path}.${heroes.thumbnail.extension}`}
+                                        />
+                                        <p>{heroes.description}</p>
+                                    </div>
                                 </div>
+
+                                <section className={styles.DetailsFath}>
+
+                                    <div className={styles.Principal}>
+                                        <h1>Comics</h1>
+                                        {heroes.comics.items.map((comic) => {
+                                            console.log(comic, "comic");
+                                            return (
+                                                <a href={`/comics?id=${heroes.id}`}>
+                                                    <p>{comic.name}</p>
+                                                </a>
+                                            )
+                                        })}
+                                    </div>
+
+                                    <div className={styles.Principal}>
+                                        <h1>Events</h1>
+                                        {heroes.events.items.map((events) => {
+                                            return (
+                                                <a href={`/events?id=${heroes.id}`}>
+                                                    <p>{events.name}</p>
+                                                </a>
+                                            )
+                                        })}
+                                    </div>
+
+                                    <div className={styles.Principal}>
+                                        <h1>Series</h1>
+                                        {heroes.series.items.map((series) => {
+                                            return (
+                                                <a href={`/series?id=${heroes.id}`}>
+                                                    <p>{series.name}</p>
+                                                </a>
+                                            )
+                                        })}
+                                    </div>
+
+                                    <div className={styles.Principal}>
+                                        <h1>Stories</h1>
+                                        {heroes.stories.items.map((stories) => {
+                                            return (
+                                                <a href={`/stories?id=${heroes.id}`}>
+                                                    <p>{stories.name}</p>
+                                                </a>
+                                            )
+                                        })}
+                                    </div>
+                                </section>
                             </div>
+
                         )
                     })
                     }
-                </div>
+                </>
 
             }
 
