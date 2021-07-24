@@ -42,7 +42,12 @@ export default function Description() {
                                         <img
                                             src={`${heroes.thumbnail.path}.${heroes.thumbnail.extension}`}
                                         />
-                                        <p>{heroes.description}</p>
+                                        {heroes.description?(
+                                            <p>{heroes.description}</p>
+                                        ):(
+                                            <p>Não existe nenhuma descrição pra esse personagem...</p>
+                                        )}
+                                        
                                     </div>
                                 </div>
 

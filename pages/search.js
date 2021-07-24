@@ -7,7 +7,7 @@ export default function Search() {
     const [data, setData] = useState();
 
     function resultSearch() {
-        window.location.href = `/description?name=${nameHeroes}` ;
+        window.location.href = `/description?name=${nameHeroes}`;
     }
 
     let url
@@ -44,16 +44,14 @@ export default function Search() {
                 <div className={styles.Details}>
                     {data.map((heroes) => {
                         return (
-                            <div>
+                            <a href={`/description?id=${heroes.id}`}>
                                 <div className={styles.DetailsHero}>
-                                    <a href={`/description?id=${heroes.id}`}>
                                         <h1>{heroes.name}</h1>
                                         <img
                                             src={`${heroes.thumbnail.path}.${heroes.thumbnail.extension}`}
                                         />
-                                    </a>
                                 </div>
-                            </div>
+                            </a>
                         )
                     })
                     }

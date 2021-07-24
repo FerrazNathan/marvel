@@ -11,13 +11,25 @@ export default function Home() {
     window.location.href = `/search?name=${nameHeroes}`;
   }
 
+    async function updateInput(e) {
+        if (e.key === "Enter" && e.currentTarget.value != "") {
+            setNameHeroes(e.target.value);
+            await resultSearch();
+        }
+
+    }
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Marvel</title>
       </Head>
       <div className={styles.input}>
-        <input type="text" placeholder="Digite Aqui Sua pesquisa" required onChange={(e) => {
+        <input 
+        type="text" 
+        placeholder="Digite Aqui Sua pesquisa" 
+        onKeyDown={updateInput}
+        required onChange={(e) => {
           setNameHeroes(e.target.value);
         }} />
 
