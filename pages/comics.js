@@ -32,6 +32,40 @@ export default function comics() {
                     Marvel-Comics
                 </title>
             </Head>
+
+            {data &&
+                <>
+                    {data.map((heroes) => {
+                        return (
+
+                            <div className={styles.Main}>
+                                <div className={styles.Header}>
+                                    <h1>{heroes.name}</h1>
+                                    <div className={styles.Img}>
+                                        <img
+                                            src={`${heroes.thumbnail.path}.${heroes.thumbnail.extension}`}
+                                        />
+                                        {heroes.description?(
+                                            <p>{heroes.description}</p>
+                                        ):(
+                                            <p>Não existe nenhuma Descrição pra esse Personagem...</p>
+                                        )}
+                                        
+                                        {heroes.comics.items.resourceURI}
+
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+
+                        )
+                    })
+                    }
+                </>
+
+            }
+
         </div>
     )
 }

@@ -45,7 +45,7 @@ export default function Description() {
                                         {heroes.description?(
                                             <p>{heroes.description}</p>
                                         ):(
-                                            <p>Não existe nenhuma descrição pra esse personagem...</p>
+                                            <p>Não existe nenhuma Descrição pra esse Personagem...</p>
                                         )}
                                         
                                     </div>
