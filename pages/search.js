@@ -6,10 +6,6 @@ import styles from '../styles/search.module.css'
 export default function Search() {
     const [data, setData] = useState();
 
-    function resultSearch() {
-        window.location.href = `/description?name=${nameHeroes}`;
-    }
-
     let url
     let nameHeroes
 

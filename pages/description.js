@@ -3,6 +3,10 @@ import axios from 'axios';
 import Head from 'next/head'
 import styles from '../styles/description.module.css'
 
+// function resultSearch() {
+//     window.location.href = `/comics?name=${nameHeroes}`;
+//   }
+
 export default function Description() {
     const [data, setData] = useState();
 
@@ -42,12 +46,12 @@ export default function Description() {
                                         <img
                                             src={`${heroes.thumbnail.path}.${heroes.thumbnail.extension}`}
                                         />
-                                        {heroes.description?(
+                                        {heroes.description ? (
                                             <p>{heroes.description}</p>
-                                        ):(
+                                        ) : (
                                             <p>Não existe nenhuma Descrição pra esse Personagem...</p>
                                         )}
-                                        
+
                                     </div>
                                 </div>
 
@@ -56,9 +60,8 @@ export default function Description() {
                                     <div className={styles.Principal}>
                                         <h1>Comics</h1>
                                         {heroes.comics.items.map((comic) => {
-                                            console.log(comic, "comic");
                                             return (
-                                                <a href={`/comics?id=${heroes.id}`}>
+                                                <a href={`/comics?=${comic.resourceURI}`}>
                                                     <p>{comic.name}</p>
                                                 </a>
                                             )
@@ -69,7 +72,7 @@ export default function Description() {
                                         <h1>Events</h1>
                                         {heroes.events.items.map((events) => {
                                             return (
-                                                <a href={`/events?id=${heroes.id}`}>
+                                                <a href={`/events?=${events.resourceURI}`}>
                                                     <p>{events.name}</p>
                                                 </a>
                                             )
@@ -80,7 +83,7 @@ export default function Description() {
                                         <h1>Series</h1>
                                         {heroes.series.items.map((series) => {
                                             return (
-                                                <a href={`/series?id=${heroes.id}`}>
+                                                <a href={`/series?=${series.resourceURI}`}>
                                                     <p>{series.name}</p>
                                                 </a>
                                             )
@@ -91,7 +94,7 @@ export default function Description() {
                                         <h1>Stories</h1>
                                         {heroes.stories.items.map((stories) => {
                                             return (
-                                                <a href={`/stories?id=${heroes.id}`}>
+                                                <a href={`/stories?=${stories.resourceURI}`}>
                                                     <p>{stories.name}</p>
                                                 </a>
                                             )

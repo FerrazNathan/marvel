@@ -2,7 +2,6 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { FaSearch } from "react-icons/fa"
 import { useState } from 'react';
-// import script from './scripts.js'
 
 export default function Home() {
   const [nameHeroes, setNameHeroes] = useState();

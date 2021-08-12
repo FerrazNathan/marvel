@@ -8,22 +8,21 @@ export default function comics() {
     const [data, setData] = useState();
 
     let url
-    let idHeroes
+    let idComics
 
     if (typeof window !== 'undefined') {
         url = window.location?.href;
-        idHeroes = url.split("id=")[1];
+        idComics = url.split("/comics?=")[1];
     }
 
     useEffect(() => {
-        axios
-            .get(
-                `https://gateway.marvel.com:443/v1/public/characters/${idHeroes}?ts=1&apikey=dfdfc06935a1fe33837da6934f7b5373&hash=f5a214e5c63b897dfe0ebc1a1185c936`,
-            )
+        axios.get(`${idComics}?ts=1&apikey=dfdfc06935a1fe33837da6934f7b5373&hash=f5a214e5c63b897dfe0ebc1a1185c936`)
             .then((preview) => {
                 setData(preview.data.data.results);
-            });
-    }, []);
+            })
+    }, [])
+
+    console.log(data, 'data');
 
     return (
         <div>
@@ -32,38 +31,26 @@ export default function comics() {
                     Marvel-Comics
                 </title>
             </Head>
-
-            {data &&
+            {
+                data &&
                 <>
-                    {data.map((heroes) => {
-                        return (
-
-                            <div className={styles.Main}>
-                                <div className={styles.Header}>
-                                    <h1>{heroes.name}</h1>
+                    {
+                        data.map((item) => {
+                            return (
+                                <div className={styles.Main}>
+                                    <h1>{item.title}</h1>
                                     <div className={styles.Img}>
                                         <img
-                                            src={`${heroes.thumbnail.path}.${heroes.thumbnail.extension}`}
+                                            src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
                                         />
-                                        {heroes.description?(
-                                            <p>{heroes.description}</p>
-                                        ):(
-                                            <p>Não existe nenhuma Descrição pra esse Personagem...</p>
-                                        )}
-                                        
-                                        {heroes.comics.items.resourceURI}
-
+                                        <p>{item.description}</p>
                                     </div>
+
                                 </div>
-
-                                
-                            </div>
-
-                        )
-                    })
+                            )
+                        })
                     }
                 </>
-
             }
 
         </div>
