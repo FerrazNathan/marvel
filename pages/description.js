@@ -8,108 +8,99 @@ import styles from '../styles/description.module.css'
 //   }
 
 export default function Description() {
-    const [data, setData] = useState();
+   const [data, setData] = useState();
 
-    let url
-    let idHeroes
+   let url
+   let idHeroes
 
-    if (typeof window !== 'undefined') {
-        url = window.location?.href;
-        idHeroes = url.split("id=")[1];
-    }
-    useEffect(() => {
-        axios
-            .get(
-                `https://gateway.marvel.com:443/v1/public/characters/${idHeroes}?ts=1&apikey=dfdfc06935a1fe33837da6934f7b5373&hash=f5a214e5c63b897dfe0ebc1a1185c936`,
-            )
-            .then((preview) => {
-                setData(preview.data.data.results);
-            });
-    }, []);
+   if (typeof window !== 'undefined') {
+      url = window.location?.href;
+      idHeroes = url.split("id=")[1];
+   }
+   useEffect(() => {
+      axios
+         .get(
+            `https://gateway.marvel.com:443/v1/public/characters/${idHeroes}?ts=1&apikey=dfdfc06935a1fe33837da6934f7b5373&hash=f5a214e5c63b897dfe0ebc1a1185c936`,
+         )
+         .then((preview) => {
+            setData(preview.data.data.results);
+         });
+   }, []);
 
-    return (
-        <div className={styles.Description}>
-            <Head>
-                <title>
-                    Marvel-Descrições
-                </title>
-            </Head>
-            {data &&
-                <>
-                    {data.map((heroes) => {
-                        return (
+   return (
+      <div className={styles.Description}>
+         <Head>
+            <title>
+               Marvel-Descrições
+            </title>
+         </Head>
+         {data &&
+            <>
+               {data.map((heroes) => {
+                  return (
 
-                            <div className={styles.Main}>
-                                <div className={styles.Header}>
-                                    <h1>{heroes.name}</h1>
-                                    <div className={styles.Img}>
-                                        <img
-                                            src={`${heroes.thumbnail.path}.${heroes.thumbnail.extension}`}
-                                        />
-                                        {heroes.description ? (
-                                            <p>{heroes.description}</p>
-                                        ) : (
-                                            <p>Não existe nenhuma Descrição pra esse Personagem...</p>
-                                        )}
+                     <div className={styles.Main}>
+                        <div className={styles.Header}>
+                           <h1>{heroes.name}</h1>
+                           <div className={styles.Img}>
+                              <img
+                                 src={`${heroes.thumbnail.path}.${heroes.thumbnail.extension}`}
+                              />
+                              {heroes.description ? (
+                                 <p>{heroes.description}</p>
+                              ) : (
+                                 <p>Não existe nenhuma Descrição pra esse Personagem...</p>
+                              )}
 
-                                    </div>
-                                </div>
+                           </div>
+                        </div>
 
-                                <section className={styles.DetailsFath}>
+                        <section className={styles.DetailsFath}>
 
-                                    <div className={styles.Principal}>
-                                        <h1>Comics</h1>
-                                        {heroes.comics.items.map((comic) => {
-                                            return (
-                                                <a href={`/comics?=${comic.resourceURI}`}>
-                                                    <p>{comic.name}</p>
-                                                </a>
-                                            )
-                                        })}
-                                    </div>
+                           <div className={styles.Principal}>
+                              <h1>Comics</h1>
+                              {heroes.comics.items.map((comic) => {
+                                 
+                                 return (
+                                    <a href={`/comics?=${comic.resourceURI}`}>
+                                       <p>{comic.name}</p>
+                                    </a>
+                                 )
+                              })}
+                           </div>
 
-                                    <div className={styles.Principal}>
-                                        <h1>Events</h1>
-                                        {heroes.events.items.map((events) => {
-                                            return (
-                                                <a href={`/events?=${events.resourceURI}`}>
-                                                    <p>{events.name}</p>
-                                                </a>
-                                            )
-                                        })}
-                                    </div>
+                           <div className={styles.Principal}>
+                              <h1>Events</h1>
+                              {heroes.events.items.map((events) => {
+                                 return (
+                                    <a href={`/events?=${events.resourceURI}`}>
+                                       <p>{events.name}</p>
+                                    </a>
+                                 )
+                              })}
+                           </div>
 
-                                    <div className={styles.Principal}>
-                                        <h1>Series</h1>
-                                        {heroes.series.items.map((series) => {
-                                            return (
-                                                <a href={`/series?=${series.resourceURI}`}>
-                                                    <p>{series.name}</p>
-                                                </a>
-                                            )
-                                        })}
-                                    </div>
+                           <div className={styles.Principal}>
+                              <h1>Series</h1>
+                              {heroes.series.items.map((series) => {
+                                 return (
+                                    <a href={`/series?=${series.resourceURI}`}>
+                                       <p>{series.name}</p>
+                                    </a>
+                                 )
+                              })}
+                           </div>
 
-                                    <div className={styles.Principal}>
-                                        <h1>Stories</h1>
-                                        {heroes.stories.items.map((stories) => {
-                                            return (
-                                                <a href={`/stories?=${stories.resourceURI}`}>
-                                                    <p>{stories.name}</p>
-                                                </a>
-                                            )
-                                        })}
-                                    </div>
-                                </section>
-                            </div>
+                        </section>
+                     </div>
 
-                        )
-                    })
-                    }
-                </>
+                  )
+               })
+               }
+            </>
 
-            }
+         }
 
-        </div>
-    )
+      </div>
+   )
 }
