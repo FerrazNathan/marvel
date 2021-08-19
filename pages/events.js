@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import Head from 'next/head'
-import styles from '../styles/events.module.css'
+import styles from '../styles/pages.module.css'
 import { IoIosArrowDroprightCircle, IoIosArrowDropleftCircle } from 'react-icons/io'
 
 export default function events() {
